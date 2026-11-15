@@ -1,255 +1,297 @@
-/* —— basic reset —— */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* L'Oréal Smart Routine Builder styles */
+:root {
+  --loreal-red: #ff003b;
+  --loreal-gold: #e3a535;
+  --ink: #211d1e;
+  --muted: #70696b;
+  --line: #e9e2e3;
+  --soft: #fff6f7;
+  --white: #ffffff;
 }
 
-/* —— body + fonts —— */
+* { box-sizing: border-box; }
+
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
-  display: flex;
-  justify-content: center;
+  margin: 0;
+  background: radial-gradient(ellipse at top, #fff 0, #faf7f5 62%, #f7f1ef 100%);
+  color: var(--ink);
+  font-family: "Montserrat", Arial, sans-serif;
+  line-height: 1.55;
 }
+
+button, input, select { font: inherit; }
 
 .page-wrapper {
-  width: 90%;
-  max-width: 900px;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
 }
 
-/* header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  margin-top: 20px;
+  padding: 48px 20px 40px;
+  border: 1px solid #553338;
+  border-top: 4px solid var(--loreal-red);
+  border-radius: 20px;
+  background: linear-gradient(120deg, #1d191a, #392327 68%, #241d1c);
+  box-shadow: 0 16px 38px #241a1a24;
 }
 
-.logo {
-  width: 250px;
-  margin-bottom: 15px;
+.brand-mark {
+  display: inline-block;
+  color: var(--white);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .12em;
 }
-
-.site-title {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-/* category filter */
-.search-section {
-  margin: 30px 0;
-  display: flex;
-}
-
-.search-section select {
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  border: 2px solid #000;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: white;
-  font-weight: 500;
-}
-
-.search-section select:focus {
-  outline: none;
-  border-color: #666;
-}
-
-/* chat section */
-.chatbox {
-  margin: 40px 0;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 26px;
-}
-
-.chatbox h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.chat-window {
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
-  height: 250px;
-  overflow-y: auto;
-  background: #fafafa;
-  margin-bottom: 20px;
-}
-
-/* placeholder message */
-.placeholder-message {
-  width: 100%;
-  text-align: center;
-  padding: 40px;
-  color: #666;
-  font-size: 18px;
-}
-
-/* input row */
-.chat-form {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.chat-form input {
-  flex: 1;
-  padding: 12px;
-  font-size: 18px;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  background: transparent;
-}
-
-.chat-form input:focus {
-  outline: none;
-  border-bottom-color: #000;
-}
-
-.chat-form button {
-  font-size: 18px;
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 12px;
+.brand-mark::after {
+  display: block;
   width: 48px;
-  height: 48px;
+  height: 2px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, var(--loreal-red), var(--loreal-gold));
+  content: "";
+}
+.brand-mark span {
+  display: block;
+  font-size: .55rem;
+  letter-spacing: .35em;
+  color: var(--loreal-gold);
+}
+.site-header .eyebrow { color: var(--loreal-gold); }
+.site-header h1 { color: var(--white); }
+.site-header .intro { color: #eee2df; }
+
+.eyebrow {
+  margin: 10px 0 5px;
+  color: var(--loreal-red);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+h1 { margin-bottom: 8px; font-size: clamp(1.8rem, 4vw, 2.7rem); }
+h2 { margin-bottom: 0; font-size: clamp(1.25rem, 3vw, 1.7rem); }
+.intro { max-width: 650px; margin: 10px auto 0; color: var(--muted); }
+.browse-section, .selected-section, .advisor-section { padding: 32px 0; }
+
+.section-heading {
   display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.section-heading .eyebrow { margin-top: 0; }
+.small-note, .status-message, .disclaimer { color: var(--muted); font-size: .82rem; }
+
+.filters {
+  display: grid;
+  grid-template-columns: auto minmax(180px, 240px) auto minmax(220px, 1fr);
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.3s;
+  gap: 12px;
+  margin: 20px 0 14px;
+}
+.filters label { font-size: .85rem; font-weight: 600; }
+.filters select, .filters input, .chat-form input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px 13px;
+  background: var(--white);
+  color: var(--ink);
+}
+.filters select:focus, .filters input:focus, .chat-form input:focus {
+  outline: 2px solid #ffb3c3;
+  border-color: var(--loreal-red);
 }
 
-.chat-form button:hover {
-  background: #666666;
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
-
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* visually hidden */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* footer */
-.site-footer {
-  margin: 60px 0 40px;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-}
-
-.site-footer nav {
-  margin-top: 12px;
-}
-
-.site-footer a {
-  margin: 0 8px;
-  color: #000;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  color: #666666;
-}
-
-/* products grid */
-.products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 30px 0;
-}
-
 .product-card {
-  flex: 0 1 calc(33.333% - 14px);
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 4px;
-  display: flex;
-  gap: 15px;
-  min-height: 160px;
-}
-
-.product-card img {
-  width: 110px;
-  height: 110px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.product-card .product-info {
-  flex: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 110px;
-}
-
-.product-card h3 {
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.product-card p {
-  font-size: 14px;
-  color: #666;
-}
-
-/* selected products */
-.selected-products {
-  margin: 40px 0;
-  padding: 20px;
-  border: 2px solid #000;
-  border-radius: 8px;
-}
-
-.selected-products h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-#selectedProductsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.generate-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  background: #000;
-  border: none;
-  border-radius: 8px;
+  overflow: hidden;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 4px 14px #241a1a08;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: border-color .18s, box-shadow .18s, transform .18s;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--loreal-gold);
+  box-shadow: 0 10px 24px #241a1a12;
+}
+.product-card:focus-visible {
+  outline: 3px solid #e3a53580;
+  outline-offset: 3px;
+}
+.product-card.selected {
+  border: 2px solid var(--loreal-red);
+  padding: 11px;
+  box-shadow: 0 0 0 3px #ff003b12, 0 8px 22px #e3a53520;
+}
+.product-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  background: linear-gradient(145deg, #fffaf8, #fcf4ec);
+  border-radius: 8px;
+}
+.product-info { padding: 12px 2px 4px; }
+.product-info h3 { margin-bottom: 4px; font-size: .98rem; }
+.product-brand { margin-bottom: 8px; color: var(--loreal-red); font-size: .78rem; font-weight: 700; }
+.product-description { margin: 0; color: var(--muted); font-size: .8rem; }
+.product-card .select-hint { margin: 10px 0 0; color: var(--loreal-red); font-size: .75rem; font-weight: 700; }
+.empty-state { padding: 16px; color: var(--muted); font-size: .9rem; }
+.status-message { min-height: 20px; }
+
+.selected-section {
+  padding: 26px;
+  border: 1px solid #f0c6ce;
+  border-block-start: 4px solid var(--loreal-red);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff0f3, #fff8e9);
+  box-shadow: 0 12px 30px #ff003b12, 0 4px 16px #e3a53512;
+}
+.count-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 27px;
+  height: 27px;
+  margin-inline-start: 5px;
+  padding: 0 7px;
+  border-radius: 20px;
+  background: var(--loreal-gold);
+  color: var(--ink);
+  font-size: .78rem;
+  vertical-align: middle;
+}
+.selected-list { display: flex; flex-wrap: wrap; gap: 9px; margin: 16px 0; }
+.selected-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #f0d1d7;
+  border-radius: 10px;
+  background: white;
+  font-size: .8rem;
+}
+.selected-item span { overflow-wrap: anywhere; }
+.remove-button, .text-button {
+  border: 0;
+  background: transparent;
+  color: var(--loreal-red);
+  cursor: pointer;
+  font-weight: 700;
+}
+.remove-button { font-size: 1rem; }
+.text-button { padding: 7px 0; font-size: .82rem; }
+.primary-button, .send-button {
+  border: 0;
+  border-radius: 9px;
+  padding: 13px 20px;
+  background: linear-gradient(120deg, var(--loreal-red), #dc0034);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 12px #ff003b26;
+  transition: transform .18s, box-shadow .18s, background .18s;
+}
+.primary-button:disabled { opacity: .45; cursor: not-allowed; }
+.primary-button:not(:disabled):hover, .send-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px #ff003b33;
+  background: linear-gradient(120deg, #ed0038, #c9002f);
+}
+.primary-button:focus-visible, .send-button:focus-visible,
+.text-button:focus-visible, .remove-button:focus-visible {
+  outline: 3px solid #e3a53599;
+  outline-offset: 3px;
 }
 
-.generate-btn:hover {
-  background: #666;
+.advisor-section {
+  margin-top: 28px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-block-start: 3px solid var(--loreal-red);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 28px #241a1a08;
+}
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 230px;
+  max-height: 430px;
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fffaf8, #f8f3f0);
+}
+.chat-message {
+  max-width: 88%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.chat-message p { margin: 5px 0 0; white-space: pre-wrap; }
+.assistant-message {
+  align-self: flex-start;
+  border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--loreal-gold);
+  background: white;
+  box-shadow: 0 3px 10px #241a1a08;
+}
+.user-message { align-self: flex-end; background: #ffe8ed; }
+.chat-message strong { font-size: .78rem; color: var(--loreal-red); }
+.chat-form { display: flex; gap: 10px; margin-top: 12px; }
+.chat-form input { flex: 1; }
+.disclaimer { margin: 10px 0 0; font-size: .72rem; }
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 0 34px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .72rem;
+  letter-spacing: .08em;
+}
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
-.generate-btn i {
-  margin-right: 8px;
+body[dir="rtl"] { direction: rtl; }
+body[dir="rtl"] .chat-message { text-align: right; }
+body[dir="rtl"] .user-message { align-self: flex-start; }
+body[dir="rtl"] .assistant-message { align-self: flex-end; }
+
+@media (max-width: 760px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filters { grid-template-columns: 1fr; gap: 7px; }
+  .section-heading { align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .product-card { flex-direction: row; gap: 12px; align-items: center; }
+  .product-card img { width: 105px; height: 115px; flex: 0 0 105px; }
+  .product-info { padding: 4px 0; }
+  .selected-section, .advisor-section { padding: 17px; }
+  .chat-form { flex-direction: column; }
+  .send-button { width: 100%; }
+  .site-footer { flex-direction: column; }
 }
